@@ -38,7 +38,7 @@ export default function AboutClient() {
                 transition={{ delay: 0.2 }}
                 className="inline-block mb-6 px-4 py-1.5 rounded-full border border-white/20 backdrop-blur-sm"
               >
-                <span className="text-white/80 text-sm font-medium">Excellence in Construction Since 2003</span>
+                <span className="text-white/80 text-sm font-medium">Excellence in Construction Since 2023</span>
               </motion.div>
 
               {/* Main Title */}

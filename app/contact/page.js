@@ -175,7 +175,7 @@ export default function Contact() {
                 initial={{ opacity: 0, x: -20 }}
                 animate={isInView ? { opacity: 1, x: 0 } : { opacity: 0, x: -20 }}
                 transition={{ duration: 0.6 }}
-                className="bg-white rounded-2xl shadow-lg p-8 md:p-12"
+                className="bg-white mt-16 rounded-2xl shadow-lg p-8 md:p-12"
               >
                 <h2 className="text-2xl font-semibold mb-8">Send Us a Message</h2>
 

@@ -48,7 +48,7 @@ const Footer = () => {
               </div>
             </Link>
             <p className="text-muted-foreground">
-              Transforming visions into reality with quality craftsmanship and innovative designs since 2003.
+              Transforming visions into reality with quality craftsmanship and innovative designs since 2023.
             </p>
             <div className="flex space-x-4">
               {[

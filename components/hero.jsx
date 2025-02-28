@@ -91,7 +91,7 @@ const Hero = () => {
           {/* Overline */}
           <motion.div
             variants={itemVariants}
-            className="inline-block mt-8 px-4 py-1.5  rounded-full border border-white/20 backdrop-blur-sm"
+            className="inline-block mt-16 px-4 py-1.5  rounded-full border border-white/20 backdrop-blur-sm"
           >
             <span className="text-white/80 text-sm font-medium">Excellence in Construction Since 2023</span>
           </motion.div>
