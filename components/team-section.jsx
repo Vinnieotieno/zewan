@@ -2,7 +2,7 @@
 
 import { useRef } from "react"
 import { motion, useInView } from "framer-motion"
-import { Mail, Phone, Linkedin, Twitter } from "lucide-react"
+import { Mail, Phone, Linkedin, Twitter } from 'lucide-react'
 import Image from "next/image"
 
 const TeamSection = () => {
@@ -13,12 +13,12 @@ const TeamSection = () => {
     {
       name: "Manasseh Zefania Odira",
       role: "Founder & CEO",
-      image: "/zeph.avif",
+      image: "/zeph1.png",
       bio: "Manasseh Zefania Odira is a dedicated construction professional with a passion for building excellence. As the driving force behind Zewan Construction Company, Manasseh brings years of experience in designing, drafting, and managing residential and commercial construction projects.",
       expertise: ["Architectural Design", "Project Management", "Sustainable Construction", "Client Relations"],
       social: {
         email: "manasseh@zewanconstruction.com",
-        phone: "+1234567890",
+        phone: "+254790747864",
         linkedin: "#",
         twitter: "#",
       },
@@ -26,12 +26,12 @@ const TeamSection = () => {
     {
       name: "Quintah Gathoni",
       role: "Construction Director",
-      image: "/gathoni.avif",
+      image: "/quin1.png",
       bio: "Quintah Gathoni is a skilled and passionate construction expert committed to delivering top-quality projects. As a key figure at Zewan Construction Company, she brings extensive experience in planning, designing, and overseeing residential and commercial builds.",
       expertise: ["Construction Management", "Quality Control", "Team Leadership", "Project Planning"],
       social: {
         email: "quintah@zewanconstruction.com",
-        phone: "+1234567891",
+        phone: "+254792879775",
         linkedin: "#",
         twitter: "#",
       },
@@ -39,7 +39,21 @@ const TeamSection = () => {
   ]
 
   return (
-    <section className="py-24 bg-gradient-to-b from-background via-primary/5 to-background">
+    <section className="py-24 bg-gradient-to-b from-background via-primary/5 to-background relative overflow-hidden">
+      {/* Animated background elements */}
+      <motion.div 
+        initial={{ opacity: 0, scale: 0.8 }}
+        animate={{ opacity: 0.5, scale: 1 }}
+        transition={{ duration: 2, repeat: Infinity, repeatType: "reverse" }}
+        className="absolute top-20 right-0 w-64 h-64 bg-primary/5 rounded-full blur-3xl -z-10"
+      />
+      <motion.div 
+        initial={{ opacity: 0, scale: 0.8 }}
+        animate={{ opacity: 0.5, scale: 1 }}
+        transition={{ duration: 2.5, repeat: Infinity, repeatType: "reverse", delay: 0.5 }}
+        className="absolute bottom-20 left-0 w-64 h-64 bg-primary/5 rounded-full blur-3xl -z-10"
+      />
+      
       <div className="container mx-auto px-4">
         {/* Section Header */}
         <motion.div
@@ -48,130 +62,166 @@ const TeamSection = () => {
           animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
           transition={{ duration: 0.6 }}
         >
+          <motion.span 
+            className="inline-block px-4 py-1 bg-primary/10 rounded-full text-primary text-sm font-medium mb-4"
+            initial={{ opacity: 0, scale: 0.8 }}
+            animate={isInView ? { opacity: 1, scale: 1 } : { opacity: 0, scale: 0.8 }}
+            transition={{ duration: 0.4, delay: 0.2 }}
+          >
+            OUR LEADERSHIP
+          </motion.span>
           <h2 className="text-4xl md:text-5xl font-bold mb-6">
             Meet Our{" "}
             <span className="bg-gradient-to-r from-primary to-primary/80 bg-clip-text text-transparent">
               Leadership Team
             </span>
           </h2>
-          <div className="w-20 h-1 bg-primary/50 mx-auto mb-6" />
+          <motion.div 
+            className="w-20 h-1 bg-primary mx-auto mb-6"
+            initial={{ width: 0 }}
+            animate={isInView ? { width: 80 } : { width: 0 }}
+            transition={{ duration: 0.6, delay: 0.4 }}
+          />
           <p className="text-lg text-muted-foreground">
             Our dedicated team of professionals brings decades of combined experience to every project, ensuring
             excellence in every build.
           </p>
         </motion.div>
 
-        {/* Team Members */}
-        <div ref={ref} className="grid md:grid-cols-2 gap-12">
-          {teamMembers.map((member, index) => (
-            <motion.div
-              key={index}
-              initial={{ opacity: 0, y: 40 }}
-              animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 40 }}
-              transition={{ duration: 0.6, delay: index * 0.2 }}
-              className="group"
-            >
-              <div className="bg-white rounded-2xl shadow-lg overflow-hidden hover:shadow-xl transition-shadow duration-300">
-                <div className="relative">
-                  {/* Image Container */}
-                  <div className="relative h-[400px] overflow-hidden">
-                    <Image
-                      src={member.image || "/placeholder.svg"}
-                      alt={member.name}
-                      fill
-                      className="object-cover object-center group-hover:scale-105 transition-transform duration-500"
-                    />
-                    <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent" />
-                  </div>
-
-                  {/* Name and Role Overlay */}
-                  <div className="absolute bottom-0 left-0 right-0 p-6 text-white">
-                    <motion.div
-                      initial={{ opacity: 0, y: 20 }}
-                      animate={{ opacity: 1, y: 0 }}
-                      transition={{ delay: 0.3 }}
-                    >
-                      <h3 className="text-2xl font-bold mb-1">{member.name}</h3>
-                      <p className="text-primary/90 font-medium">{member.role}</p>
-                    </motion.div>
-                  </div>
-                </div>
-
-                {/* Content */}
-                <div className="p-6">
-                  <p className="text-muted-foreground mb-6">{member.bio}</p>
-
-                  {/* Expertise */}
-                  <div className="mb-6">
-                    <h4 className="text-sm font-semibold text-primary mb-3">AREAS OF EXPERTISE</h4>
-                    <div className="flex flex-wrap gap-2">
-                      {member.expertise.map((skill, skillIndex) => (
-                        <span key={skillIndex} className="px-3 py-1 bg-primary/10 text-primary rounded-full text-sm">
-                          {skill}
-                        </span>
-                      ))}
-                    </div>
-                  </div>
-
-                  {/* Contact & Social */}
-                  <div className="pt-6 border-t">
-                    <div className="flex flex-wrap gap-4">
-                      <a
-                        href={`mailto:${member.social.email}`}
-                        className="flex items-center text-sm text-muted-foreground hover:text-primary transition-colors"
-                      >
-                        <Mail className="h-4 w-4 mr-2" />
-                        <span>Email</span>
-                      </a>
-                      <a
-                        href={`tel:${member.social.phone}`}
-                        className="flex items-center text-sm text-muted-foreground hover:text-primary transition-colors"
-                      >
-                        <Phone className="h-4 w-4 mr-2" />
-                        <span>Call</span>
-                      </a>
-                      <a
-                        href={member.social.linkedin}
-                        className="flex items-center text-sm text-muted-foreground hover:text-primary transition-colors"
-                      >
-                        <Linkedin className="h-4 w-4 mr-2" />
-                        <span>LinkedIn</span>
-                      </a>
-                      <a
-                        href={member.social.twitter}
-                        className="flex items-center text-sm text-muted-foreground hover:text-primary transition-colors"
-                      >
-                        <Twitter className="h-4 w-4 mr-2" />
-                        <span>Twitter</span>
-                      </a>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </motion.div>
-          ))}
-        </div>
-
-        {/* Team Values */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
-          transition={{ duration: 0.6, delay: 0.4 }}
-          className="mt-20 text-center"
-        >
-          <div className="max-w-3xl mx-auto">
-            <h3 className="text-2xl font-semibold mb-4">Join Our Team</h3>
-            <p className="text-muted-foreground mb-8">
-              We're always looking for talented individuals who share our passion for excellence in construction. If
-              you're interested in joining our team, we'd love to hear from you.
-            </p>
+        {/* Team Members with Alternating Layout */}
+        <div ref={ref} className="space-y-16">
+          {teamMembers.map((member, index) => {
+            const isEven = index % 2 === 0;
             
-          </div>
-        </motion.div>
+            return (
+              <motion.div
+                key={index}
+                initial={{ opacity: 0, y: 40 }}
+                animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 40 }}
+                transition={{ duration: 0.6, delay: index * 0.2 }}
+                className="group"
+              >
+                <div className={`bg-white/80 backdrop-blur-sm rounded-2xl shadow-lg overflow-hidden hover:shadow-xl transition-all duration-500 transform hover:-translate-y-1`}>
+                  <div className={`flex flex-col ${isEven ? 'md:flex-row' : 'md:flex-row-reverse'} items-stretch`}>
+                    {/* Image Container - Using aspect ratio instead of fixed height */}
+                    <div className="md:w-1/2 relative">
+                      <div className="aspect-[3/4] md:aspect-auto md:h-full w-full relative">
+                        <div className="absolute inset-0 bg-muted flex items-center justify-center">
+                          <Image
+                            src={member.image || "/placeholder.svg"}
+                            alt={member.name}
+                            fill
+                            className="object-contain object-center group-hover:scale-105 transition-transform duration-700"
+                            sizes="(max-width: 768px) 100vw, 50vw"
+                            priority
+                            onError={(e) => {
+                              e.currentTarget.src = "/placeholder.svg?height=600&width=600";
+                            }}
+                          />
+                        </div>
+                        
+                        {/* Name and Role Overlay for Mobile */}
+                        <div className="absolute bottom-0 left-0 right-0 p-6 text-white md:hidden bg-gradient-to-t from-black/80 to-transparent">
+                          <motion.div
+                            initial={{ opacity: 0, y: 20 }}
+                            animate={{ opacity: 1, y: 0 }}
+                            transition={{ delay: 0.3 }}
+                          >
+                            <h3 className="text-2xl font-bold mb-1">{member.name}</h3>
+                            <p className="text-primary-foreground font-medium opacity-90">{member.role}</p>
+                          </motion.div>
+                        </div>
+                      </div>
+                    </div>
+
+                    {/* Content */}
+                    <div className="md:w-1/2 p-6 md:p-8 flex flex-col justify-center">
+                      {/* Desktop Name and Role */}
+                      <div className="hidden md:block mb-4">
+                        <h3 className="text-2xl font-bold mb-1 relative inline-block">
+                          {member.name}
+                          <motion.span 
+                            className="absolute -bottom-1 left-0 h-0.5 bg-primary"
+                            initial={{ width: 0 }}
+                            whileInView={{ width: '100%' }}
+                            viewport={{ once: true }}
+                            transition={{ duration: 0.6, delay: 0.5 }}
+                          />
+                        </h3>
+                        <p className="text-primary font-medium">{member.role}</p>
+                      </div>
+                      
+                      <p className="text-muted-foreground mb-6">{member.bio}</p>
+
+                      {/* Expertise */}
+                      <div className="mb-6">
+                        <h4 className="text-sm font-semibold text-primary mb-3 tracking-wider flex items-center">
+                          <span className="w-5 h-0.5 bg-primary mr-2"></span>
+                          AREAS OF EXPERTISE
+                        </h4>
+                        <div className="flex flex-wrap gap-2">
+                          {member.expertise.map((skill, skillIndex) => (
+                            <motion.span 
+                              key={skillIndex} 
+                              className="px-3 py-1 bg-primary/10 text-primary rounded-full text-sm"
+                              initial={{ opacity: 0, x: -10 }}
+                              whileInView={{ opacity: 1, x: 0 }}
+                              viewport={{ once: true }}
+                              transition={{ duration: 0.3, delay: 0.1 * skillIndex }}
+                            >
+                              {skill}
+                            </motion.span>
+                          ))}
+                        </div>
+                      </div>
+
+                      {/* Contact & Social */}
+                      <div className="pt-6 border-t border-primary/10">
+                        <div className="flex flex-wrap gap-4">
+                          <a
+                            href={`mailto:${member.social.email}`}
+                            className="flex items-center gap-2 text-primary hover:underline"
+                          >
+                            <Mail size={16} />
+                            {member.social.email}
+                          </a>
+                          <a
+                            href={`tel:${member.social.phone}`}
+                            className="flex items-center gap-2 text-primary hover:underline"
+                          >
+                            <Phone size={16} />
+                            {member.social.phone}
+                          </a>
+                          <a
+                            href={member.social.linkedin}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="flex items-center gap-2 text-primary hover:underline"
+                          >
+                            <Linkedin size={16} />
+                            LinkedIn
+                          </a>
+                          <a
+                            href={member.social.twitter}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="flex items-center gap-2 text-primary hover:underline"
+                          >
+                            <Twitter size={16} />
+                            Twitter
+                          </a>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </motion.div>
+            );
+          })}
+        </div>
       </div>
     </section>
-  )
-}
+  );
+};
 
-export default TeamSection
-
+export default TeamSection;
