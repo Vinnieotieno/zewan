@@ -237,11 +237,11 @@ const Footer = () => {
             </h3>
             <ul className="space-y-3">
               {[
-                { label: "Custom Home Building", href: "/services/custom-homes" },
-                { label: "Home Renovations", href: "/services/renovations" },
-                { label: "Interior & Exterior Finishing", href: "/services/finishing" },
-                { label: "Additions & Extensions", href: "/services/additions" },
-                { label: "Commercial Construction", href: "/services/commercial" },
+                { label: "Custom Home Building", href: "/services/custom-home-building" },
+                { label: "Home Renovations", href: "/services/home-renovations" },
+                { label: "Interior & Exterior Finishing", href: "/services/interior-and-exterior" },
+                { label: "Additions & Extensions", href: "/additions-and-extensions" },
+                { label: "Commercial Construction", href: "/services/commercial-projects" },
               ].map((service, index) => (
                 <li key={index}>
                   <Link

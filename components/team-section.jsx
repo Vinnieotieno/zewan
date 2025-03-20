@@ -1,17 +1,18 @@
 "use client"
 
-import { useRef } from "react"
-import { motion, useInView } from "framer-motion"
-import { Mail, Phone, Linkedin, Twitter } from 'lucide-react'
+import { useRef, useState } from "react"
+import { motion, useInView, AnimatePresence } from "framer-motion"
+import { Mail, Phone, Linkedin, Twitter, X } from 'lucide-react'
 import Image from "next/image"
 
 const TeamSection = () => {
   const ref = useRef(null)
   const isInView = useInView(ref, { once: true, margin: "-100px" })
+  const [zoomedImage, setZoomedImage] = useState(null)
 
   const teamMembers = [
     {
-      name: "Manasseh Zefania Odira",
+      name: "Manasseh.Z.Odira",
       role: "Founder & CEO",
       image: "/zeph1.png",
       bio: "Manasseh Zefania Odira is a dedicated construction professional with a passion for building excellence. As the driving force behind Zewan Construction Company, Manasseh brings years of experience in designing, drafting, and managing residential and commercial construction projects.",
@@ -37,6 +38,14 @@ const TeamSection = () => {
       },
     },
   ]
+
+  const handleImageZoom = (imageSrc, name) => {
+    setZoomedImage({ src: imageSrc, name });
+  }
+
+  const closeZoom = () => {
+    setZoomedImage(null);
+  }
 
   return (
     <section className="py-24 bg-gradient-to-b from-background via-primary/5 to-background relative overflow-hidden">
@@ -105,19 +114,26 @@ const TeamSection = () => {
                   <div className={`flex flex-col ${isEven ? 'md:flex-row' : 'md:flex-row-reverse'} items-stretch`}>
                     {/* Image Container - Using aspect ratio instead of fixed height */}
                     <div className="md:w-1/2 relative">
-                      <div className="aspect-[3/4] md:aspect-auto md:h-full w-full relative">
-                        <div className="absolute inset-0 bg-muted flex items-center justify-center">
+                      <div 
+                        className="aspect-[3/4] md:aspect-auto md:h-full w-full relative cursor-pointer"
+                        onClick={() => handleImageZoom(member.image, member.name)}
+                      >
+                        <div className="absolute inset-0 bg-blue-400 flex items-center justify-center overflow-hidden">
                           <Image
                             src={member.image || "/placeholder.svg"}
                             alt={member.name}
                             fill
-                            className="object-contain object-center group-hover:scale-105 transition-transform duration-700"
+                            className="object-contain object-center group-hover:scale-110 transition-transform duration-700"
                             sizes="(max-width: 768px) 100vw, 50vw"
                             priority
+                            quality={95}
                             onError={(e) => {
                               e.currentTarget.src = "/placeholder.svg?height=600&width=600";
                             }}
                           />
+                          <div className="absolute inset-0 bg-primary/5 opacity-0 group-hover:opacity-100 flex items-center justify-center transition-opacity duration-300">
+                            <span className="bg-white/80 text-primary px-4 py-2 rounded-full text-sm font-medium">Click to zoom</span>
+                          </div>
                         </div>
                         
                         {/* Name and Role Overlay for Mobile */}
@@ -220,6 +236,48 @@ const TeamSection = () => {
           })}
         </div>
       </div>
+
+      {/* Image Zoom Modal */}
+      <AnimatePresence>
+        {zoomedImage && (
+          <motion.div 
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            className="fixed inset-0 bg-black/80 z-50 flex items-center justify-center p-4"
+            onClick={closeZoom}
+          >
+            <motion.div 
+              initial={{ scale: 0.8, opacity: 0 }}
+              animate={{ scale: 1, opacity: 1 }}
+              exit={{ scale: 0.8, opacity: 0 }}
+              className="relative max-w-4xl w-full max-h-[90vh] bg-blue-50 rounded-xl overflow-hidden"
+              onClick={(e) => e.stopPropagation()}
+            >
+              <div className="absolute top-4 right-4 z-10">
+                <button 
+                  onClick={closeZoom}
+                  className="bg-white/80 hover:bg-white p-2 rounded-full text-primary transition-colors"
+                >
+                  <X size={24} />
+                </button>
+              </div>
+              <div className="relative h-[80vh] w-full">
+                <Image 
+                  src={zoomedImage.src} 
+                  alt={zoomedImage.name}
+                  fill
+                  className="object-contain"
+                  quality={100}
+                />
+              </div>
+              <div className="absolute bottom-0 left-0 right-0 bg-white/90 p-4 text-center">
+                <h3 className="text-xl font-bold text-gray-800">{zoomedImage.name}</h3>
+              </div>
+            </motion.div>
+          </motion.div>
+        )}
+      </AnimatePresence>
     </section>
   );
 };

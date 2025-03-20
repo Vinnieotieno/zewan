@@ -38,7 +38,7 @@ export default function AboutClient() {
                 transition={{ delay: 0.2 }}
                 className="inline-block mb-6 px-4 py-1.5 rounded-full border border-white/20 backdrop-blur-sm"
               >
-                <span className="text-white/80 text-sm font-medium">Excellence in Construction Since 2023</span>
+                <span className="text-white/80 text-sm font-medium"> Zewan Excellence in Construction</span>
               </motion.div>
 
               {/* Main Title */}
@@ -107,10 +107,10 @@ export default function AboutClient() {
           <div className="container mx-auto px-4">
             <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
               {[
-                { icon: Building2, number: "500+", label: "Projects Completed" },
-                { icon: Users, number: "1000+", label: "Happy Clients" },
-                { icon: Clock, number: "20+", label: "Years Experience" },
-                { icon: Award, number: "50+", label: "Awards Won" },
+                { icon: Building2, number: "20+", label: "Projects Completed" },
+                { icon: Users, number: "100+", label: "Happy Clients" },
+               //{ icon: Clock, number: "20+", label: "Years Experience" },
+                { icon: Award, number: "5+", label: "Awards Won" },
               ].map((stat, index) => (
                 <motion.div
                   key={index}

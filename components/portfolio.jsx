@@ -1,6 +1,5 @@
-"use client"
-
-import { useRef, useState } from "react"
+//"use client"
+{/*import { useRef, useState } from "react"
 import Image from "next/image"
 import Link from "next/link"
 import { motion, useInView, AnimatePresence } from "framer-motion"
@@ -195,7 +194,7 @@ const Portfolio = () => {
         </motion.div>
       </div>
 
-      {/* Project Modal */}
+      {/* Project Modal 
       <AnimatePresence>
         {currentProject && (
           <motion.div
@@ -276,3 +275,4 @@ const Portfolio = () => {
 
 export default Portfolio
 
+*/}

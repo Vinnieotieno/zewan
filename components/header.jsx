@@ -15,11 +15,14 @@ const Header = () => {
 
   useEffect(() => {
     const handleScroll = () => {
-      setIsScrolled(window.scrollY > 10)
+      const scrolled = window.scrollY > 10
+      if (scrolled !== isScrolled) {
+        setIsScrolled(scrolled) // Update state only if it changes
+      }
     }
     window.addEventListener("scroll", handleScroll)
     return () => window.removeEventListener("scroll", handleScroll)
-  }, [])
+  }, [isScrolled]) // Add dependency to avoid infinite updates
 
   const navItems = [
     { label: "Home", href: "/" },
@@ -28,10 +31,10 @@ const Header = () => {
       label: "Services",
       href: "/services",
       children: [
-        { label: "Custom Homes", href: "/services/custom-homes", icon: <Home className="h-4 w-4" /> },
-        { label: "Renovations", href: "/services/renovations", icon: <RefreshCw className="h-4 w-4" /> },
-        { label: "Commercial", href: "/services/commercial", icon: <Building className="h-4 w-4" /> },
-        { label: "Interior Design", href: "/services/interior-design", icon: <Paintbrush className="h-4 w-4" /> },
+        { label: "Custom Homes", href: "/services/custom-home-building", icon: <Home className="h-4 w-4" /> },
+        { label: "Renovations", href: "/services/home-renovations", icon: <RefreshCw className="h-4 w-4" /> },
+        { label: "Commercial", href: "/services/commercial-projects", icon: <Building className="h-4 w-4" /> },
+        { label: "Interior Design", href: "/services/interior-and-exterior", icon: <Paintbrush className="h-4 w-4" /> },
       ],
     },
     { label: "Portfolio", href: "/portfolio" },

@@ -169,7 +169,7 @@ const Hero = () => {
             className="inline-block mb-8 px-6 py-2 rounded-full border border-white/20 backdrop-blur-sm"
           >
             <span className="text-white/90 text-sm font-medium tracking-wider uppercase">
-              Excellence in Construction Since 2023
+             Zewan Excellence in Construction.
             </span>
           </motion.div>
 
@@ -199,7 +199,7 @@ const Hero = () => {
             variants={itemVariants}
             className="text-xl md:text-2xl text-white/90 mb-10 max-w-3xl mx-auto leading-relaxed"
           >
-            With over <span className="font-semibold text-white">5 years</span> of experience, we transform your vision
+            With many <span className="font-semibold text-white">years</span> of experience, we transform your vision
             into extraordinary spaces through <span className="text-primary font-medium">innovative design</span> and
             <span className="text-primary font-medium"> exceptional craftsmanship</span>.
           </motion.p>
@@ -280,9 +280,9 @@ const Hero = () => {
         transition={{ delay: 1.5 }}
       >
         <Link href="#services" className="flex flex-col items-center gap-2 group">
-          <span className="text-white/60 text-sm font-medium group-hover:text-white/90 transition-colors duration-300">
+         {/* <span className="text-white/60 text-sm font-medium group-hover:text-white/90 transition-colors duration-300">
             Scroll to explore
-          </span>
+          </span>*/}
           <motion.div
             className="w-10 h-14 rounded-full border-2 border-white/20 flex justify-center pt-3 group-hover:border-white/40 transition-colors duration-300"
             animate={{ y: [0, 5, 0] }}

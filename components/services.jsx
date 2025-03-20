@@ -117,7 +117,10 @@ const Services = () => {
 
                 <div className="pt-4 mt-auto">
                   <Link
-                    href={`/services#${service.title.toLowerCase().replace(/\s+/g, "-")}`}
+                    href={`/services/${service.title
+                      .toLowerCase()
+                      .replace(/\s+/g, "-")
+                      .replace(/&/g, "and")}`} // Replace '&' with 'and'
                     className="inline-flex items-center text-primary hover:text-primary/80 transition-colors group/link"
                   >
                     Learn More
